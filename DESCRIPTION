@@ -1,18 +1,25 @@
 Package: EMODnetBiologyMaps
-Title: What the Package Does (One Line, Title Case)
+Title: Creates ggplot maps with the style of EMODnet
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Salvador",
+           family = "Fernández Bejarano",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "salvador.fernandez@vliz.be",
+           comment = c(ORCID = "0000-0003-0535-7677"))
+Description: This package creates ggplot maps using the colors and style recommendations of EMODnet.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     testthat
+Imports: 
+    magick,
+    ggplot2,
+    sf,
+    raster,
+    eurobis
+Depends: 
+    R (>= 2.10)
