@@ -11,9 +11,13 @@
 #' @export
 #'
 #' @examples
-#' data <- eurobis::getEurobisGrid(aphiaid = 107451, gridsize = '30m')
-#' plot <- emodnet_map_plot(data, fill = data$RecordCount,
-#' title = "Eriocheir sinensis", subtitle = "107451", legend = "Abundance")
+#' aphiaid <- 107451
+#' specname <- "Eriocheir sinensis"
+#' Esgrid <- sf::st_read(paste0("http://geo.vliz.be/geoserver/wfs/ows?", "service=WFS&version=1.3.0&",
+#' "request=GetFeature&", "typeName=Dataportal%3Aeurobis_grid_1d",
+#' "-obisenv&", "viewParams=aphiaid%3A", aphiaid, "&", "outputFormat=json", "&maxFeatures=10"))
+#' plot <- emodnet_map_plot(Esgrid, fill = Esgrid$RecordCount,  title = specname,
+#' subtitle = paste("Aphiaid =",aphiaid), legend = "Abundance",plot_polygon_border=TRUE)
 #' emodnet_map_logo(plot, path = paste0(tempfile(), ".png"),
 #' width = 198, height = 121, dpi = 300, units = "mm")
 emodnet_map_logo <- function(plot, path = NULL, gravity = "northeast", offset = "+0+0", color = TRUE, ...){
