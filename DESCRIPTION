@@ -14,12 +14,16 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
-    testthat
+    testthat,
+    eurobis (>= 0.0.0.9000),
+    imis (>= 0.2.0)
 Imports: 
     magick,
     ggplot2,
     sf,
-    raster,
-    eurobis
+    raster
 Depends: 
     R (>= 2.10)
+Remotes: 
+    lifewatch/eurobis,
+    EMODnet/imis
