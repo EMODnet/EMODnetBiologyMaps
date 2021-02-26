@@ -12,7 +12,11 @@
 #' @examples
 #' emodnet_map_basic()
 #' emodnet_map_basic(crs = 3035, xlim = c(2426378, 7093974), ylim = c(1308101, 5446513))
-emodnet_map_basic <- function(seaColor = emodnet_colors()$darkgrey, landColor = emodnet_colors()$lightgrey, crs = NULL, xlim = NULL, ylim = NULL){
+emodnet_map_basic <- function(seaColor = emodnet_colors()$darkgrey,
+                              landColor = emodnet_colors()$lightgrey,
+                              crs = NULL,
+                              xlim = NULL,
+                              ylim = NULL){
   # Quality Check
   if(is.null(xlim) == FALSE & is.null(ylim) & is.null(crs) ||
      is.null(xlim) & is.null(ylim) == FALSE & is.null(crs) ||

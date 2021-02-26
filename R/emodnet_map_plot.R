@@ -11,16 +11,24 @@
 #' @param direction integer
 #' @param option character
 #' @param zoom boolean
+#' @param plot_polygon_border boolean
 #' @param ... params to be passed to emodnet_map_basic
 #'
 #' @return ggplot
 #' @export
 #'
 #' @examples
-#' data <- eurobis::getEurobisGrid(aphiaid = 107451, gridsize = '30m')
-#' emodnet_map_plot(data, fill = data$RecordCount,  title = "Eriocheir sinensis",
-#' subtitle = "107451", legend = "Abundance")
-emodnet_map_plot <- function(data, fill = NULL, title = NULL, subtitle = NULL, legend = NULL, crs = 3035, xlim = c(2426378.0132, 7093974.6215), ylim = c(1308101.2618, 5446513.5222), direction = 1, option = "viridis", zoom = FALSE, ...){
+#' aphiaid <- 107451
+#' specname <- "Eriocheir sinensis"
+#' Esgrid <- st_read(paste0("http://geo.vliz.be/geoserver/wfs/ows?", "service=WFS&version=1.3.0&",
+#' "request=GetFeature&", "typeName=Dataportal%3Aeurobis_grid_1d",
+#' "-obisenv&", "viewParams=aphiaid%3A", aphiaid, "&", "outputFormat=json"))
+#' emodnet_map_plot(Esgrid, fill = Esgrid$RecordCount,  title = specname,
+#' subtitle = paste("Aphiaid =",aphiaid), legend = "Abundance",plot_polygon_border=TRUE)
+emodnet_map_plot <- function(data, fill = NULL, title = NULL, subtitle = NULL, legend = NULL,
+                             crs = 3035, xlim = c(2426378.0132, 7093974.6215),
+                             ylim = c(1308101.2618, 5446513.5222), direction = 1,
+                             option = "viridis", zoom = FALSE,plot_polygon_border=TRUE, ...){
   # Quality check
   stopifnot(class(data)[1] %in% c("sf", "RasterLayer", "SpatialPolygonsDataFrame", "SpatialPointsDataFrame", "SpatialLinesDataFrame"))
 
@@ -50,9 +58,15 @@ emodnet_map_plot <- function(data, fill = NULL, title = NULL, subtitle = NULL, l
 
   # if data are sf polygons
   if(sf::st_geometry_type(data, FALSE) == "POLYGON"){
-    emodnet_map_plot <- emodnet_map_basic +
-      ggplot2::geom_sf(data = data, ggplot2::aes(fill = fill), size = 0.05) +
-      ggplot2::scale_fill_viridis_c(alpha = 0.8, name = legend, direction = direction, option = option)
+    if(plot_polygon_border){
+      emodnet_map_plot <- emodnet_map_basic +
+        ggplot2::geom_sf(data = data, ggplot2::aes(fill = fill), size = 0.05) +
+        ggplot2::scale_fill_viridis_c(alpha = 0.8, name = legend, direction = direction, option = option)
+    }else{
+      emodnet_map_plot <- emodnet_map_basic +
+        ggplot2::geom_sf(data = data, ggplot2::aes(fill = fill), size = 0.05,color=NA) +
+        ggplot2::scale_fill_viridis_c(alpha = 0.8, name = legend, direction = direction, option = option)
+    }
   }
 
   # Projection and zoom
