@@ -16,6 +16,7 @@ emodnet_map_plot(
   direction = 1,
   option = "viridis",
   zoom = FALSE,
+  plot_polygon_border = TRUE,
   ...
 )
 }
@@ -42,6 +43,8 @@ emodnet_map_plot(
 
 \item{zoom}{boolean}
 
+\item{plot_polygon_border}{boolean}
+
 \item{...}{params to be passed to emodnet_map_basic}
 }
 \value{
@@ -51,7 +54,11 @@ ggplot
 Plot your spatial data following the EMODnet style
 }
 \examples{
-data <- eurobis::getEurobisGrid(aphiaid = 107451, gridsize = '30m')
-emodnet_map_plot(data, fill = data$RecordCount,  title = "Eriocheir sinensis",
-subtitle = "107451", legend = "Abundance")
+aphiaid <- 107451
+specname <- "Eriocheir sinensis"
+Esgrid <- sf::st_read(paste0("http://geo.vliz.be/geoserver/wfs/ows?", "service=WFS&version=1.3.0&",
+"request=GetFeature&", "typeName=Dataportal\%3Aeurobis_grid_1d",
+"-obisenv&", "viewParams=aphiaid\%3A", aphiaid, "&", "outputFormat=json", "&maxFeatures=10"))
+emodnet_map_plot(Esgrid, fill = Esgrid$RecordCount,  title = specname,
+subtitle = paste("Aphiaid =",aphiaid), legend = "Abundance",plot_polygon_border=TRUE)
 }

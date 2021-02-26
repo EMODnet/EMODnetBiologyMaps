@@ -20,9 +20,9 @@
 #' @examples
 #' aphiaid <- 107451
 #' specname <- "Eriocheir sinensis"
-#' Esgrid <- st_read(paste0("http://geo.vliz.be/geoserver/wfs/ows?", "service=WFS&version=1.3.0&",
+#' Esgrid <- sf::st_read(paste0("http://geo.vliz.be/geoserver/wfs/ows?", "service=WFS&version=1.3.0&",
 #' "request=GetFeature&", "typeName=Dataportal%3Aeurobis_grid_1d",
-#' "-obisenv&", "viewParams=aphiaid%3A", aphiaid, "&", "outputFormat=json"))
+#' "-obisenv&", "viewParams=aphiaid%3A", aphiaid, "&", "outputFormat=json", "&maxFeatures=10"))
 #' emodnet_map_plot(Esgrid, fill = Esgrid$RecordCount,  title = specname,
 #' subtitle = paste("Aphiaid =",aphiaid), legend = "Abundance",plot_polygon_border=TRUE)
 emodnet_map_plot <- function(data, fill = NULL, title = NULL, subtitle = NULL, legend = NULL,
