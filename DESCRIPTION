@@ -1,12 +1,9 @@
 Package: EMODnetBiologyMaps
 Title: Creates ggplot maps with the style of EMODnet
-Version: 0.0.0.9000
+Version: 0.0.1.0
 Authors@R: 
-    person(given = "Salvador",
-           family = "Fernández Bejarano",
-           role = c("aut", "cre"),
-           email = "salvador.fernandez@vliz.be",
-           comment = c(ORCID = "0000-0003-0535-7677"))
+    c(person(given = "Salvador", family = "Fernández Bejarano", role = c("aut", "cre"), email = "salvador.fernandez@vliz.be", comment = c(ORCID = "0000-0003-0535-7677")),
+      person(given = "Lennert", family = "Schepers", email = "lennert.schepers@vliz.be", role = "ctb"))
 Description: This package creates ggplot maps using the colors and style recommendations of EMODnet.
 License: MIT + file LICENSE
 Encoding: UTF-8

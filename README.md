@@ -2,6 +2,8 @@
 # EMODnetBiologyMaps
 
 <!-- badges: start -->
+[![R build
+status](https://github.com/EMODnet/EMODnetBiologyMaps/workflows/R-CMD-check/badge.svg)](https://github.com/EMODnet/EMODnetBiologyMaps/actions)
 <!-- badges: end -->
 
 The goal of EMODnetBiologyMaps is to create ggplot2 maps of using the EMODnet style:
