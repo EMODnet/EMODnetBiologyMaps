@@ -57,7 +57,7 @@ emodnet_map_plot <- function(data, fill = NULL, title = NULL, subtitle = NULL, l
 
   # if data are sf polygons
   if(sf::st_geometry_type(data, FALSE) == "POLYGON"){
-    fill <- sf::st_drop_geometry(data)[, 1]
+    if(is.null(fill))fill <- sf::st_drop_geometry(data)[, 1]
     if(plot_polygon_border){
       emodnet_map_plot <- emodnet_map_basic +
         ggplot2::geom_sf(data = data, ggplot2::aes(fill = fill), size = 0.05) +
