@@ -1,9 +1,9 @@
 #' Creates a ggplot map using EMODnet colors
 #'
-#' @param seaColor character HEX code color
-#' @param landColor character HEX code color
-#' @param crs integer or characnter. EPGS code or projection linestring
-#' @param xlim vector with minimum and maximum longitude
+#' @param seaColor character HEX code color. This is the color used for the sea and land borders
+#' @param landColor character HEX code color. This is the color used for the countries
+#' @param crs Coordinate Reference System of the map. Default: LAEA Europe, EPGS:3035. Accepts EPGS and strings.
+#' @param xlim vector with minimum and maximum longitude.
 #' @param ylim vector with minimum and maximum latitude
 #'
 #' @return basic ggplot2 map
@@ -12,7 +12,7 @@
 #' @examples
 #' emodnet_map_basic()
 #' emodnet_map_basic(crs = 3035, xlim = c(2426378, 7093974), ylim = c(1308101, 5446513))
-emodnet_map_basic <- function(seaColor = emodnet_colors()$darkgrey,
+emodnet_map_basic <- function(seaColor = emodnet_colors()$altlightgrey,
                               landColor = emodnet_colors()$lightgrey,
                               crs = NULL,
                               xlim = NULL,

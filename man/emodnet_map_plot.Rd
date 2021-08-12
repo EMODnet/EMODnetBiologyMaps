@@ -21,29 +21,32 @@ emodnet_map_plot(
 )
 }
 \arguments{
-\item{data}{sf, RasterLayer, "SpatialPolygonsDataFrame", "SpatialPointsDataFrame", "SpatialLinesDataFrame"}
+\item{data}{Data to be plotted in a map. Accepts sf, RasterLayer, "SpatialPolygonsDataFrame",
+"SpatialPointsDataFrame", "SpatialLinesDataFrame"}
 
-\item{fill}{vector}
+\item{fill}{column or vector used for filling in case of plotting a polygon.}
 
-\item{title}{character}
+\item{title}{Title of the plot.}
 
-\item{subtitle}{character}
+\item{subtitle}{Subtitle of the plot.}
 
-\item{legend}{character}
+\item{legend}{Legend of the values.}
 
-\item{crs}{integer}
+\item{crs}{Coordinate Reference System of the map. Default: LAEA Europe, EPGS:3035. Accepts EPGS and strings.}
 
-\item{xlim}{vector}
+\item{xlim}{Vector with minimum and maximum longitude. Default to Europe scale.}
 
-\item{ylim}{vector}
+\item{ylim}{Vector with minimum and maximum latitude. Default to Europe scale.}
 
-\item{direction}{integer}
+\item{direction}{Direction in which the scale colors are drawn. Default 1. Reverse with -1.}
 
-\item{option}{character}
+\item{option}{The color style used for the filling. Default "viridis". Try also "plasma"}
 
-\item{zoom}{boolean}
+\item{zoom}{If TRUE, the size of the plot is calculated from the bounding box of the data. Otherwise
+you should provide xlim and ylim to your desired size}
 
-\item{plot_polygon_border}{boolean}
+\item{plot_polygon_border}{if TRUE, the border of the polygon will be drawn. Default is TRUE. Set to FALSE
+if you have small polygons compared to the size of the canvas.}
 
 \item{...}{params to be passed to emodnet_map_basic}
 }
@@ -60,5 +63,5 @@ Esgrid <- sf::st_read(paste0("http://geo.vliz.be/geoserver/wfs/ows?", "service=W
 "request=GetFeature&", "typeName=Dataportal\%3Aeurobis_grid_1d",
 "-obisenv&", "viewParams=aphiaid\%3A", aphiaid, "&", "outputFormat=json", "&maxFeatures=10"))
 emodnet_map_plot(Esgrid, fill = Esgrid$RecordCount,  title = specname,
-subtitle = paste("Aphiaid =",aphiaid), legend = "Abundance",plot_polygon_border=TRUE)
+subtitle = paste("Aphiaid =", aphiaid), legend = "Abundance", plot_polygon_border = TRUE)
 }

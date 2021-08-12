@@ -5,7 +5,7 @@
 \title{Creates a ggplot map using EMODnet colors}
 \usage{
 emodnet_map_basic(
-  seaColor = emodnet_colors()$darkgrey,
+  seaColor = emodnet_colors()$altlightgrey,
   landColor = emodnet_colors()$lightgrey,
   crs = NULL,
   xlim = NULL,
@@ -13,13 +13,13 @@ emodnet_map_basic(
 )
 }
 \arguments{
-\item{seaColor}{character HEX code color}
+\item{seaColor}{character HEX code color. This is the color used for the sea and land borders}
 
-\item{landColor}{character HEX code color}
+\item{landColor}{character HEX code color. This is the color used for the countries}
 
-\item{crs}{integer or characnter. EPGS code or projection linestring}
+\item{crs}{Coordinate Reference System of the map. Default: LAEA Europe, EPGS:3035. Accepts EPGS and strings.}
 
-\item{xlim}{vector with minimum and maximum longitude}
+\item{xlim}{vector with minimum and maximum longitude.}
 
 \item{ylim}{vector with minimum and maximum latitude}
 }

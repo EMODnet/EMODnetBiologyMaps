@@ -1,6 +1,7 @@
 #' Load colors of EMODnet
 #'
-#' This function returns a list with the six colors palette of EMODnet Biology, and white
+#' This function returns a list with the six colors palette of EMODnet Biology, white and
+#' an alternative light grey
 #'
 #' @return list
 #' @export
@@ -17,7 +18,8 @@ emodnet_colors <- function(){
     darkblue = "#012E58",
     lightblue = "#61AADF",
     white = "#FFFFFF",
-    lightgrey = "#F9F9F9"
+    lightgrey = "#F9F9F9",
+    altlightgrey = "#cfd3d4"
   )
   return(colors)
 }
